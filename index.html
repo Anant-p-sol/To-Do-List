@@ -18,6 +18,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.com/libraries/font-awesome"></script>
 </head>
 
 <body>
@@ -34,7 +35,19 @@
                     <h1 class="todo-items-heading">
                         My <span class="todo-items-heading-subpart">Tasks</span>
                     </h1>
-                    <ul class="todo-items-container" id="todoItemsContainer"></ul>
+                    <ul class="todo-items-container" id="todoItemsContainer">
+                        <li class="todo-item-container d-flex flex-row">
+                            <input type="checkbox" class="checkbox-input" id="checkboxInput"/>
+                            <div class="d-flex flex-row label-container">
+                                <label for="checkboxInput" class="checkbox-label">
+                                    learn HTML
+                                </label>
+                                <div class="delete-icon-container">
+                                    <i class="far fa-trash-alt delete-icon"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
