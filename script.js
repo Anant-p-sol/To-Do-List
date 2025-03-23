@@ -1,27 +1,34 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let todoList = [
     {
-        text: "Learn HTML"
+        text: "Learn HTML",
+        uniqueNo : 1
     },
     {
-        text: "learn CSS"
+        text: "learn CSS",
+        uniqueNo : 2
     },
     {
-        text: "learn Javascript"
+        text: "learn Javascript",
+        uniqueNo : 3
     },
     {
-        text: "learn Bootstrap"
+        text: "learn Bootstrap",
+        uniqueNo : 4
     }
 ]
 
 function createAndAppendTodo(todo) {
+    let checkboxId = "checkbox" + todo.uniqueNo;
+
+
     let todoElement = document.createElement("li");
     todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
     todoItemsContainer.appendChild(todoElement);
 
     let inputElement = document.createElement("input");
     inputElement.type = "checkbox";
-    inputElement.id = "checkboxInput";
+    inputElement.id = checkboxId;
     inputElement.classList.add("checkbox-input");
     todoElement.appendChild(inputElement);
 
@@ -30,7 +37,7 @@ function createAndAppendTodo(todo) {
     todoElement.appendChild(labelContainer);
 
     let labelElement = document.createElement("label");
-    labelElement.setAttribute("for", "CheckboxInput");
+    labelElement.setAttribute("for", checkboxId);
     todoElement.classList.add("checkbox-label");
     labelElement.textContent = todo.text;
     labelContainer.appendChild(labelElement);
