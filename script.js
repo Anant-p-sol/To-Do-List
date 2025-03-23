@@ -20,15 +20,9 @@ let todoList = [
 
 function onTodoStatusChange(checkboxId,labelId){
     let checkboxElement = document.getElementById(checkboxId);
-    console.log(checkboxElement.checked);
     let labelElement = document.getElementById(labelId);
-    
-    if(checkboxElement.checked === true){
-        labelElement.classList.add("checked");    
-    }else{
-        labelElement.classList.remove("checked");
-    }
-    
+    labelElement.classList.toggle("checked");
+
 
 }
 
