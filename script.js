@@ -1,7 +1,3 @@
-const { JSDOM } = require("jsdom");
-const dom = new JSDOM(`<!DOCTYPE html><body><div id="todoItemsContainer"></div></body>`);
-global.document = dom.window.document;
-
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let addTodoButton = document.getElementById("addTodoButton");
 
