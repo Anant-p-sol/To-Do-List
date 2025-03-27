@@ -1,19 +1,25 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
 
-let todoList = [{
-        text: "Learn HTML",
-        uniqueNo: 1
-    },
-    {
-        text: "Learn CSS",
-        uniqueNo: 2
-    },
-    {
-        text: "Learn JavaScript",
-        uniqueNo: 3
+function getListFromLocalStorage(){
+    let stringifiedTodoList = localStorage.getItem("todoList");
+    let parseTodoList = JSON.parse(stringifiedTodoList);
+
+    if(parseTodoList === null){
+        return [];
+
+    }else{
+        return parseTodoList;
     }
-];
+}
+
+let todoList = getListFromLocalStorage();
+
+saveTodoButton.onclick = function(){
+    localStorage.setItem("todoList",JSON.stringify(todoList));
+
+}
 
 let todosCount = todoList.length;
 
@@ -45,7 +51,7 @@ function createAndAppendTodo(todo) {
     inputElement.setAttribute("type", "checkbox");
     inputElement.classList.add("checkbox-input");
     inputElement.id = checkboxId;
-    inputElement.onclick = function() {
+    inputElement.onclick = function () {
         onTodoStatusChange(checkboxId, labelId);
     };
     todoElement.appendChild(inputElement);
@@ -67,7 +73,7 @@ function createAndAppendTodo(todo) {
 
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
-    deleteIcon.onclick = function() {
+    deleteIcon.onclick = function () {
         onDeleteTodo(todoId);
     };
     deleteIconContainer.appendChild(deleteIcon);
@@ -88,14 +94,14 @@ function onAddTodo() {
     todosCount = todosCount + 1;
     let newTodo = {
         text: userInputTodoValue,
-        uniqueNo: todosCount
+        uniqueNo: todosCount,
     };
-
+    todoList.push(newTodo);
     createAndAppendTodo(newTodo);
     userInputTodo.value = "";
 
 }
 
-addTodoButton.onclick = function() {
+addTodoButton.onclick = function () {
     onAddTodo();
 };
