@@ -35,6 +35,17 @@ function onTodoStatusChange(checkboxId, labelId) {
 function onDeleteTodo(todoId) {
     let todoElement = document.getElementById(todoId);
     todoItemsContainer.removeChild(todoElement);
+    let deletedElementIndex = todoList.findIndex(
+        function(eachTodo){
+            let eachTodoId = "todo" + eachTodo.uniqueNo;
+            if(eachTodoId === todoId){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    );
+    todoList.splice(deletedElementIndex,1);
 }
 
 function createAndAppendTodo(todo) {
@@ -72,7 +83,7 @@ function createAndAppendTodo(todo) {
     labelContainer.appendChild(deleteIconContainer);
 
     let deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
+    deleteIcon.classList.add("bi", "bi-trash");
     deleteIcon.onclick = function () {
         onDeleteTodo(todoId);
     };
